@@ -3,6 +3,7 @@ Python program that aligns 2 sequence2, creates a dotplot, and outputs BED file 
 
 # Input arguements
 1) A .fasta file containing two sequences
+
 2) Size threshold for returned indel regions in file indelRegions.bed
 3) DotPlot window size
 4) DotPlot window count threshold
