@@ -1,5 +1,5 @@
 # DotPlotter
-Python program that aligns 2 sequence2, creates a dotplot, and outputs BED file of indel regions, txt file showing how sequences were aligned, and postscript file
+Python program that aligns 2 sequence2, creates a dotplot, and outputs BED file of indel regions, txt file showing how sequences were aligned, and postscript file for reopening the graph.
 
 # Input arguements
 1) A .fasta file containing two sequences
@@ -21,7 +21,7 @@ alignmentInfo.txt - contains two sequences after alignment containing "-", also 
 indelRegions.bed  - depending on provided indel size, this contains info reguarding the indexs where indel regions >= to size provided
 exist within each sequence informat SequenceID indexStart indexStop
 
-dotPlot.ps
+dotPlot.ps - can be used to reopen the graph once the initial window created by the program has been closed
 
 # Usage 
 Python3 dotPlotter.py filename.fasta (indel size threshold) (window size) (count threshold)
