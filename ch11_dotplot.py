@@ -29,6 +29,7 @@ class DotPlot(Plot):
     ipad_right = 12
     #keep track of non - matches
     realMatches = 0
+    gapMatches = 0
 
     def __init__(self, seq1, seq2, seqname1 = '', seqname2='',
                  window=1, threshold=1, with_axes=False, dot_size=1,
@@ -71,12 +72,25 @@ class DotPlot(Plot):
                 if self.seq2[y] == "-":
                         if self.test_point(self.seq1, x, self.seq2, y):
                                 pts.append((x, y))
+                                self.gapMatches = self.gapMatches + 1
+        for x in range(1 + len(self.seq2) - self.window):
+            if self.test_pointGap(self.seq1, x, self.seq2, x):
+                    pts.append((x, x))
+
+
         return pts
 
     def test_point(self, seq1, x, seq2, y):
         cnt = 0
         for n in range(self.window):
             if seq1[x+n] == seq2[y+n]:
+                cnt += 1
+        return cnt >= self.threshold
+
+    def test_pointGap(self, seq1, x, seq2, y):
+        cnt = 0
+        for n in range(self.window):
+            if seq1[x+n] == "-" and seq2[y+n] != "-":
                 cnt += 1
         return cnt >= self.threshold
 
@@ -151,9 +165,17 @@ class DotPlot(Plot):
                     pt[0] + self.dot_size - 1,
                     self.plot_height - self.window - pt[1] - self.dot_size - 1)
                 pointsDrawn = pointsDrawn + 1
-           else:
+           if self.realMatches < pointsDrawn <= self.realMatches + self.gapMatches:
                 self.draw_oval2(
                      pt[0],
                      self.plot_height - self.window - pt[1],
                      pt[0] + self.dot_size - 1,
                      self.plot_height - self.window - pt[1] - self.dot_size - 1)
+                pointsDrawn = pointsDrawn + 1
+           if pointsDrawn > self.realMatches + self.gapMatches:
+                self.draw_oval3(
+                     pt[0],
+                     self.plot_height - self.window - pt[1],
+                     pt[0] + self.dot_size - 1,
+                     self.plot_height - self.window - pt[1] - self.dot_size - 1)
+                pointsDrawn = pointsDrawn + 1

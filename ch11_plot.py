@@ -317,6 +317,17 @@ subclass's definition of create_widgets.
                                 outline=fill,
                                 )
 
+    def draw_oval3(self, x1, y1, x2, y2, width=1, fill='green'):
+        """Draw oval on canvas relative to canvas origin and scale"""
+        self.canvas.create_oval(self.origin_x + round(x1*self.scale),
+                                self.origin_y - round(y1*self.scale),
+                                self.origin_x + round(x2*self.scale),
+                                self.origin_y - round(y2*self.scale),
+                                width=round(width*self.scale),
+                                fill=fill,
+                                outline=fill,
+                                )
+
     def draw_rectangle(self, x, y, w, h, fill='black'):
         """Draw rectangle on canvas relative to canvas origin and scale"""
         x = self.origin_x + x*self.scale
