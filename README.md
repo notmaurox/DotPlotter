@@ -27,6 +27,7 @@ size provided exist within each sequence informat SequenceID indexStart indexSto
 ```
 python3 dotPlotter.py filename.fasta (indel size threshold) (window size) (count threshold)
 ```
+For the indel size threshold, it is based on the lowest length of a possible gene in the subject. For instance human genes average around 8446 base pairs, but the shortest gene is 1148 base pairs. Thus we should set the indel size threshold to 1148. For bacteria the average length is about 1000 base pairs but the shortest possible is 9 nucleotides long for a dipeptide. Meaning we should use an indel size threshold of 9.
 
 Specifying the window size (w) and count threshold (t) helps remove
 noise from the graph. Window size describes how many spaces along the
