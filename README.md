@@ -12,7 +12,7 @@ Python program that aligns 2 sequence2, creates a dotplot, and outputs BED file 
 
 # Output
 A graph where the first sequence is along the x-axis and the second along the y-axis. Perfect matches in nucleotides are represented
-on the graph as black points. If a match occurs because of two empty spaces ("-" character) it is represented by a red dot.
+on the graph as black points. If a match occurs because of two empty spaces ("-" character) it is represented by a red dot. Additionally, points where on the first sequence there is a neucleotide and on the second there is an empty space (or vice versa), will show up grees. These green dots provide an idea of the regions where there are insertions or deletions between the two sequences. 
 
 The following files will be placed within a directory called ``dotPlotterOut``:
 
