@@ -23,6 +23,10 @@ size provided exist within each sequence informat SequenceID indexStart indexSto
 
 * ``dotPlot.ps`` - can be used to reopen the graph once the initial window created by the program has been closed
 
+![Alt text](https://github.com/notmaurox/DotPlotter/blob/master/DotPlotterGraphExample.png)
+
+*Example window displaying dot plot graph*
+
 # Usage
 ```
 python3 dotPlotter.py filename.fasta (indel size threshold) (window size) (count threshold)
